@@ -252,7 +252,12 @@
 	        .style("font-size","14px")
 	        .style("font-weight", "bold")
 	        .style("font-family","Arial")
+	
+       d3.selectAll('input[name="BTHY"]').on("change", change);
 	       
+       function change() {
+	       console.log("Inside the function");
+       }
         
 	       
        }); 
