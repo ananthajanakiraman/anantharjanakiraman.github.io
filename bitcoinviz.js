@@ -113,8 +113,9 @@
               .attr("d", line);
 	
 	  svg.append("path")
-	      .datum(data)
+	      .data([data])
 	      .attr("fill","lightsteelblue")
+	      .attr("class","area")
               .attr("d", area);
 	       
 	   var focus = svg.append("g")
