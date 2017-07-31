@@ -257,6 +257,10 @@
 	       
        function change() {
 	       console.log("Inside the function");
+	       
+	       var val1 = d3.select('input[name="BTHY"]:checked').node().value;
+	       
+	       console.log("after val1 evaluation");
        }
         
 	       
