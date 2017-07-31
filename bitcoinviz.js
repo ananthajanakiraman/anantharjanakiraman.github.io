@@ -260,8 +260,17 @@
 	       
 	       var val1 = d3.select('input[name="BTHY"]:checked').node().value;
 	       
-	       console.log("after val1 evaluation");
-       }
+	       d3.tsv("databit"+val1+".tsv", function(error, data) {
+                  if (error) throw error; 
+            
+                  data.forEach(function(d) {
+                  d.date = parseDate(d.Date);
+		  d.price = +d.BITCOIN;
+	          console.log(d.date, d.price);
+                  });
+		       
+	       });
+         }
         
 	       
        }); 
