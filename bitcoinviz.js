@@ -282,6 +282,21 @@
 	       	      d3.max(data, function(d) {return d.price;})
                   ]);
 	          area.y0(y(0));		       
+		  
+	          var svg = d3.select("acontent").transition();
+		       
+                  svg.select(".line")   // change the line
+                     .duration(750)
+                     .attr("d", line(data));
+                  svg.select(".area")
+                     .duration(750)
+	             .attr("d",area(data));
+                  svg.select(".x.axis") // change the x axis
+                     .duration(750)
+                     .call(xAxis);
+                  svg.select(".y.axis") // change the y axis
+                     .duration(750)
+                     .call(yAxis);  		       
 		       
 	       });
          }
