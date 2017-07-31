@@ -268,6 +268,20 @@
 		  d.price = +d.BITCOIN;
 	          console.log(d.date, d.price);
                   });
+		
+                  data.sort(function(a, b) {
+                       return a.date - b.date;
+                  });
+
+                  x.domain(d3.extent(data, function(d) {
+                       return d.date;
+                  }));
+	       
+                  y.domain([
+                      0,
+	       	      d3.max(data, function(d) {return d.price;})
+                  ]);
+	          area.y0(y(0));		       
 		       
 	       });
          }
