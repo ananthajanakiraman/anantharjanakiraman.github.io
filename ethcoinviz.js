@@ -271,6 +271,7 @@
 		        };
 	       
 	       	svg.append("text")
+	        .attr("class","maxValue")
 		.attr("x",width/2-100)
 		.attr("y",y(maximum1))
 		.text('Peak: ' + '$' + maximum1)
@@ -280,6 +281,7 @@
 	       
 	       
 	       	svg.append("text")
+	        .attr("class","minValue")	       
 		.attr("x",width/2+10)
 		.attr("y",y(maximum1))
 		.text('Lowest: ' + '$' + minimum1)
