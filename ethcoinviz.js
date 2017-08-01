@@ -383,7 +383,7 @@
                 if (val1 == "1MO") {	       
 	         svg.selectAll(".text1")
 		.attr("x",width/2-200)			
-		.text("During recent times, the spike has saturated and value is steady")  };		       
+		.text("In recent times, the spike has saturated and value is steady")  };		       
 		      
 		       		   
 	       });
