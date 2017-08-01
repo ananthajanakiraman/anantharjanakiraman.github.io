@@ -337,10 +337,10 @@
                   svg.select(".y.axis") // change the y axis
                      .duration(750)
                      .call(yAxis);  	
-                  maxCircle.duration(750).attr("cx", x(maximumObj.date))
+                  maxCircle.transition().duration(750).attr("cx", x(maximumObj.date))
 	             .attr("cy", y(maximumObj.price));
 		  //repeat();
-                  minCircle.duration(750).attr("cx", x(minimumObj.date))
+                  minCircle.transition().duration(750).attr("cx", x(minimumObj.date))
 	             .attr("cy", y(minimumObj.price));	
 		   //repeat1();    
 		   
