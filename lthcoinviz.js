@@ -288,6 +288,16 @@
 	        .style("font-size","10px")
 	        .style("font-weight", "bold")
 	        .style("font-family","sans-serif")
+	       
+	         svg.append("text")
+	        .attr("class","text1")
+		.attr("x",width/2-200)
+		.attr("y",height/2-100)
+		.text("Litecoin was released via an open-source client on GitHub in early 2012")
+	        .style("font-size","14px")
+	        .style("font-weight", "bold")
+	        .style("font-family","sans-serif")
+
 
 	       d3.selectAll('input[name="LITY"]').on("change", change);
 	       
@@ -348,7 +358,31 @@
 
                   minCircle.attr("cx", x(minimumObj.date))
 	             .attr("cy", y(minimumObj.price));	
-
+		       
+               if (val1 == "1YR") {	       
+	         svg.selectAll(".text1")
+		.attr("x",width/2-200)			
+		.text("In 2016, the price increased steadily")  };
+		       
+                if (val1 == "5YR") {	       
+	         svg.selectAll(".text1")
+		.attr("x",width/2-200)			
+		.text("Litecoin was released via an open-source client on GitHub in early 2012")  };		       
+		       
+                if (val1 == "3YR") {	       
+	         svg.selectAll(".text1")
+		.attr("x",width/2-200)				
+		.text("In 2014 aggregate value experienced massive growth which included a 100% leap within 24 hours")  };	
+		       
+                if (val1 == "6MO") {	       
+	         svg.selectAll(".text1")
+		.attr("x",width/2-200)			
+		.text("As of May 9 2017 its market cap is USD1,542,657,077 at around $30 per coin")  };
+		       
+                if (val1 == "1MO") {	       
+	         svg.selectAll(".text1")
+		.attr("x",width/2-200)			
+		.text("In 2017 the value is expected to appreciate higher")  };			       
 		       		   
 	       });
            }
