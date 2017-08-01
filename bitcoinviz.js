@@ -362,7 +362,15 @@
 		       
                 if (val1 == "3YR") {	       
 	         svg.selectAll(".text1")
-		.text("Revived from 2014 downfall and ended strong in 2015")  };		 
+		.text("Revived from 2014 downfall and ended strong in 2015")  };	
+		       
+                if (val1 == "6MO") {	       
+	         svg.selectAll(".text1")
+		.text("2017 - All Time High Twice")  };
+		       
+                if (val1 == "1MO") {	       
+	         svg.selectAll(".text1")
+		.text("2017 3rd Quarter Bubble is about to burst")  };		       
 		       
 		       
 	       });
