@@ -114,8 +114,8 @@
               .attr("d", line);
 	
 	  svg.append("path")
-	      .datum(data)
-	      .attr("fill","bisque")
+	      .data([data])
+	      .attr("class","areaeth")
               .attr("d", area);
 	       
 	   var focus1 = svg.append("g")
@@ -273,19 +273,83 @@
 	       	svg.append("text")
 		.attr("x",width/2-100)
 		.attr("y",y(maximum1))
-		.text('--Peak: ' + '$' + maximum1)
+		.text('Peak: ' + '$' + maximum1)
 	        .style("font-size","10px")
-	        .style("font-weight", "regular")
+	        .style("font-weight", "bold")
 	        .style("font-family","sans-serif")
 	       
 	       
 	       	svg.append("text")
 		.attr("x",width/2+10)
 		.attr("y",y(maximum1))
-		.text('--Lowest: ' + '$' + minimum1)
+		.text('Lowest: ' + '$' + minimum1)
 	        .style("font-size","10px")
-	        .style("font-weight", "regular")
+	        .style("font-weight", "bold")
 	        .style("font-family","sans-serif")
+	       
+	       d3.selectAll('input[name="ETHY"]').on("change", change);
+	       
+               function change() {
+       
+	       var val1 = d3.select('input[name="ETHY"]:checked').node().value;
+	       
+	       d3.tsv("dataeth"+val1+".tsv", function(error, data) {
+                  if (error) throw error; 
+            
+                  data.forEach(function(d) {
+                  d.date = parseDate(d.Date);
+		  d.price = +d.ETHEREUM;
+
+                  });
+		
+                  data.sort(function(a, b) {
+                       return a.date - b.date;
+                  });
+
+                  x.domain(d3.extent(data, function(d) {
+                       return d.date;
+                  }));
+	       
+                  y.domain([
+                      0,
+	       	      d3.max(data, function(d) {return d.price;})
+                  ]);
+	          area.y0(y(0));		       
+		  
+	          var maximum1 = d3.max(data, function(d) {return d.price;});
+ 	          var maximumObj = data.filter(function(d) {return d.price == maximum1;})[0];
+		       
+	          var minimum1 = d3.min(data, function(d) {return d.price;});
+ 	          var minimumObj = data.filter(function(d) {return d.price == minimum1;})[0];	
+		  
+		  console.log(maximum1, minimum1, maximumObj, minimumObj);
+		       
+	          var svg = d3.select("bcontent").transition();
+		       
+                  svg.select(".lineeth")   // change the line
+                     .duration(750)
+                     .attr("d", line(data));
+                  svg.select(".areaeth")
+                     .duration(750)
+	             .attr("d",area(data));
+                  svg.select(".x.axis") // change the x axis
+                     .duration(750)
+                     .call(xAxis);
+                  svg.select(".y.axis") // change the y axis
+                     .duration(750)
+                     .call(yAxis);  	
+		  svg.selectAll(".maxValue").attr("y",y(maximum1)).text('Peak: ' + '$' + maximum1)
+	          svg.selectAll(".minValue").attr("y",y(maximum1)).text('Lowest: ' + '$' + minimum1)
+		       
+                  maxCircle.attr("cx", x(maximumObj.date))
+	             .attr("cy", y(maximumObj.price));
+
+                  minCircle.attr("cx", x(minimumObj.date))
+	             .attr("cy", y(minimumObj.price));	
+
+		       		   
+	       });
+           }
 
        }); 
     })(d3);
