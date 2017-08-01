@@ -113,8 +113,7 @@
               .attr("d", line);
 	
 	  svg.append("path")
-	      .data(data)
-	      .attr("fill","lightsteelblue")
+	      .data([data])
 	      .attr("class","area")
               .attr("d", area);
 	       
