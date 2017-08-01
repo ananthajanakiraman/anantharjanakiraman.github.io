@@ -291,7 +291,7 @@
 	         svg.append("text")
 	        .attr("class","text1")
 		.attr("x",width/2-200)
-		.attr("y",height/2)
+		.attr("y",height/2+100)
 		.text("From Steady Increase in 2012 to Big Ride in 2013 and Big Downfall in 2014")
 	        .style("font-size","14px")
 	        .style("font-weight", "bold")
