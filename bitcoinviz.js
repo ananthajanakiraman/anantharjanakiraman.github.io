@@ -338,8 +338,8 @@
                   svg.select(".y.axis") // change the y axis
                      .duration(750)
                      .call(yAxis);  	
-		  svg.selectAll(".maxValue").attr("y",y(maximum1)).text('Peak: ' + maximum1)
-	          svg.selectAll(".minValue").attr("y",y(minimum1)).text('Lowest: ' + minimum1)
+		  svg.selectAll(".maxValue").attr("y",y(maximum1)).text('Peak: ' + '$' + maximum1)
+	          svg.selectAll(".minValue").attr("y",y(maximum1)).text('Lowest: ' + '$' + minimum1)
 		       
                   maxCircle.attr("cx", x(maximumObj.date))
 	             .attr("cy", y(maximumObj.price));
