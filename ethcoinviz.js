@@ -289,6 +289,16 @@
 	        .style("font-weight", "bold")
 	        .style("font-family","sans-serif")
 	       
+	       
+	        svg.append("text")
+	        .attr("class","text1")
+		.attr("x",width/2-200)
+		.attr("y",height/2-100)
+		.text("System went live on 30 July 2015, with 11.9 million coins premined for crowdsale")
+	        .style("font-size","14px")
+	        .style("font-weight", "bold")
+	        .style("font-family","sans-serif")
+	       
 	       d3.selectAll('input[name="ETHY"]').on("change", change);
 	       
                function change() {
@@ -348,7 +358,33 @@
 
                   minCircle.attr("cx", x(minimumObj.date))
 	             .attr("cy", y(minimumObj.price));	
+		       
+               if (val1 == "1YR") {	       
+	         svg.selectAll(".text1")
+		.attr("x",width/2-200)			
+		.text("In 2016 Ethereum was forked into two blockchains due to collapse of The DAO project")  };
+		       
 
+                if (val1 == "5YR") {	       
+	         svg.selectAll(".text1")
+		.attr("x",width/2-200)			
+		.text("System went live on 30 July 2015, with 11.9 million coins premined for crowdsale")  };		       
+		       
+                if (val1 == "3YR") {	       
+	         svg.selectAll(".text1")
+		.attr("x",width/2-200)				
+		.text("Participants started buying Ether value coins in 2014")  };	
+		       
+                if (val1 == "6MO") {	       
+	         svg.selectAll(".text1")
+		.attr("x",width/2-200)			
+		.text("Last 6 months has seen sudden spike in price")  };
+		       
+                if (val1 == "1MO") {	       
+	         svg.selectAll(".text1")
+		.attr("x",width/2-200)			
+		.text("During recent times, the spike has saturated and value is steady")  };		       
+		      
 		       		   
 	       });
            }
