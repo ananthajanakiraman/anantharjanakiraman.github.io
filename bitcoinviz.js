@@ -320,6 +320,8 @@
 		       
 	          minimum1 = d3.min(data, function(d) {return d.price;});
  	          minimumObj = data.filter(function(d) {return d.price == minimum1;})[0];	
+		  
+		  console.log(maximum1, minimum1, maximumObj, minimumObj);
 		       
 	          var svg = d3.select("acontent").transition();
 		       
