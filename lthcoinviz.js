@@ -361,7 +361,7 @@
 		       
                if (val1 == "1YR") {	       
 	         svg.selectAll(".text1")
-		.attr("x",width/2-200)			
+		.attr("x",width/2-100)			
 		.text("In 2016, the price increased steadily")  };
 		       
                 if (val1 == "5YR") {	       
@@ -371,7 +371,7 @@
 		       
                 if (val1 == "3YR") {	       
 	         svg.selectAll(".text1")
-		.attr("x",width/2-200)				
+		.attr("x",width/2-250)				
 		.text("In 2014 aggregate value experienced massive growth which included a 100% leap within 24 hours")  };	
 		       
                 if (val1 == "6MO") {	       
@@ -382,7 +382,7 @@
                 if (val1 == "1MO") {	       
 	         svg.selectAll(".text1")
 		.attr("x",width/2-200)			
-		.text("In 2017 the value is expected to appreciate higher")  };			       
+		.text("In the 3rd quarter of 2017 the value is expected to increase at least by 30% ")  };			       
 		       		   
 	       });
            }
