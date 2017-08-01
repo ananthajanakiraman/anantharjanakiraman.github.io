@@ -70,6 +70,14 @@ img.center {
     fill: lightsteelblue;
 }
 
+.areaeth {
+    fill: bisque;
+}
+
+.arealit {
+    fill: Khaki;
+}
+
 text {
   font: 10px sans-serif;
 }
