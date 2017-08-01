@@ -113,8 +113,9 @@
               .attr("d", line);
 	
 	  svg.append("path")
-	      .datum(data)
+	      .data(data)
 	      .attr("fill","lightsteelblue")
+	      .attr("class","area")
               .attr("d", area);
 	       
 	   var focus = svg.append("g")
@@ -286,6 +287,58 @@
 	        .style("font-weight", "regular")
 	        .style("font-family","sans-serif")
 	       
+       d3.selectAll('input[name="BTHY"]').on("change", change);
+	       
+       function change() {
+	       console.log("Inside the function");
+	       
+	       var val1 = d3.select('input[name="BTHY"]:checked').node().value;
+	       maximum1 = d3.max(data, function(d) {return d.price;});
+ 	       maximumObj = data.filter(function(d) {return d.price == maximum1;})[0];
+	       
+	       d3.tsv("databit"+val1+".tsv", function(error, data) {
+                  if (error) throw error; 
+            
+                  data.forEach(function(d) {
+                  d.date = parseDate(d.Date);
+		  d.price = +d.BITCOIN;
+	          console.log(d.date, d.price);
+                  });
+		
+                  data.sort(function(a, b) {
+                       return a.date - b.date;
+                  });
 
+                  x.domain(d3.extent(data, function(d) {
+                       return d.date;
+                  }));
+	       
+                  y.domain([
+                      0,
+	       	      d3.max(data, function(d) {return d.price;})
+                  ]);
+	          area.y0(y(0));		       
+		  
+	          var svg = d3.select("acontent").transition();
+		       
+                  svg.select(".line")   // change the line
+                     .duration(750)
+                     .attr("d", line(data));
+                  svg.select(".area")
+                     .duration(750)
+	             .attr("d",area(data));
+                  svg.select(".x.axis") // change the x axis
+                     .duration(750)
+                     .call(xAxis);
+                  svg.select(".y.axis") // change the y axis
+                     .duration(750)
+                     .call(yAxis);  	
+                  svg.select(".maxCircle")
+	             .attr("cx", x(maximumObj.date))
+	             .attr("cy", y(maximumObj.price));
+		       
+	       });
+         }
+	       
        }); 
       })(d3);
