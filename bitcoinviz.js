@@ -337,33 +337,13 @@
                   svg.select(".y.axis") // change the y axis
                      .duration(750)
                      .call(yAxis);  	
-                  maxCircle.transition().duration(750).attr("cx", x(maximumObj.date))
+                  maxCircle.attr("cx", x(maximumObj.date))
 	             .attr("cy", y(maximumObj.price));
-		  repeat();
-                  minCircle.transition().duration(750).attr("cx", x(minimumObj.date))
+
+                  minCircle.attr("cx", x(minimumObj.date))
 	             .attr("cy", y(minimumObj.price));	
-		  repeat1();
-		       
-		  function repeat() {
-			 maxCircle.transition()
-				  .duration(2000)
-			          .attr("r", 2)
-				  .transition()
-				  .duration(1000)
-				  .attr("r", 16)
-				  .on("end", repeat);
-			};
-	       
-	        function repeat1() {
-			          minCircle.transition()
-				  .duration(2000)
-			          .attr("r", 2)
-				  .transition()
-				  .duration(1000)
-				  .attr("r", 16)
-				  .on("end", repeat1);
-		        };
-		   
+
+		       		   
 	       });
            }
 	       
