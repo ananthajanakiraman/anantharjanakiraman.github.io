@@ -287,14 +287,7 @@
 	        .style("font-weight", "bold")
 	        .style("font-family","sans-serif")
 	       
-	       	svg.append("text")
-	        .attr("class","text1")
-		.attr("x",width/2-100)
-		.attr("y",height/2)
-		.text("From Steady Increase in 2012 to Big Ride in 2013 and Big Downfall in 2014")
-	        .style("font-size","14px")
-	        .style("font-weight", "bold")
-	        .style("font-family","sans-serif")       
+	        console.log(val);
 	       
        d3.selectAll('input[name="BTHY"]').on("change", change);
 	       
