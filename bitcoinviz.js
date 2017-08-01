@@ -6,6 +6,8 @@
          console.log("Hello world.")
         });
 
+	document.getElementById("BFYR").checked = true;
+	      
 	var val = d3.select('input[name="BTHY"]:checked').node().value;
 	      
        var margin = {
