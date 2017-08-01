@@ -364,7 +364,7 @@
 
                 if (val1 == "5YR") {	       
 	         svg.selectAll(".text1")
-		.attr("x",width/2-100)			
+		.attr("x",width/2-200)			
 		.text("From Steady Increase in 2012 to Big Ride in 2013 and Big Downfall in 2014")  };		       
 		       
                 if (val1 == "3YR") {	       
