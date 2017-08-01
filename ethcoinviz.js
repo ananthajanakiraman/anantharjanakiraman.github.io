@@ -377,7 +377,7 @@
 		       
                 if (val1 == "6MO") {	       
 	         svg.selectAll(".text1")
-		.attr("x",width/2-200)			
+		.attr("x",width/2-100)			
 		.text("Last 6 months has seen sudden spike in price")  };
 		       
                 if (val1 == "1MO") {	       
