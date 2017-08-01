@@ -315,11 +315,11 @@
                   ]);
 	          area.y0(y(0));		       
 		  
-	          maximum1 = d3.max(data, function(d) {return d.price;});
- 	          maximumObj = data.filter(function(d) {return d.price == maximum1;})[0];
+	          var maximum1 = d3.max(data, function(d) {return d.price;});
+ 	          var maximumObj = data.filter(function(d) {return d.price == maximum1;})[0];
 		       
-	          minimum1 = d3.min(data, function(d) {return d.price;});
- 	          minimumObj = data.filter(function(d) {return d.price == minimum1;})[0];	
+	          var minimum1 = d3.min(data, function(d) {return d.price;});
+ 	          var minimumObj = data.filter(function(d) {return d.price == minimum1;})[0];	
 		  
 		  console.log(maximum1, minimum1, maximumObj, minimumObj);
 		       
@@ -337,14 +337,12 @@
                   svg.select(".y.axis") // change the y axis
                      .duration(750)
                      .call(yAxis);  	
-                  svg.select("maxCircle")
-	             .attr("cx", x(maximumObj.date))
+                  maxCircle.attr("cx", x(maximumObj.date))
 	             .attr("cy", y(maximumObj.price));
-		  repeat();
-                  svg.select("minCircle")
-	             .attr("cx", x(minimumObj.date))
+		  //repeat();
+                  minCircle.attr("cx", x(minimumObj.date))
 	             .attr("cy", y(minimumObj.price));	
-		   repeat1();    
+		   //repeat1();    
 		   
 	       });
            }
