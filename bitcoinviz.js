@@ -291,7 +291,7 @@
 	         svg.append("text")
 	        .attr("class","text1")
 		.attr("x",width/2-200)
-		.attr("y",height/2+100)
+		.attr("y",height/2-100)
 		.text("From Steady Increase in 2012 to Big Ride in 2013 and Big Downfall in 2014")
 	        .style("font-size","14px")
 	        .style("font-weight", "bold")
@@ -357,7 +357,27 @@
                   minCircle.attr("cx", x(minimumObj.date))
 	             .attr("cy", y(minimumObj.price));	
 
-		       		   
+                if (val1 == "1YR") {	       
+	         svg.append("text")
+	        .attr("class","text1")
+		.attr("x",width/2-200)
+		.attr("y",height/2-100)
+		.text("2016 : A Nail Biter")
+	        .style("font-size","14px")
+	        .style("font-weight", "bold")
+	        .style("font-family","sans-serif")   };
+		       
+                if (val1 == "3YR") {	       
+	         svg.append("text")
+	        .attr("class","text1")
+		.attr("x",width/2-200)
+		.attr("y",height/2-100)
+		.text("Revived from 2014 downfall and ended strong in 2015")
+	        .style("font-size","14px")
+	        .style("font-weight", "bold")
+	        .style("font-family","sans-serif")   };		 
+		       
+		       
 	       });
            }
 	       
