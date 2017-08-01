@@ -358,6 +358,7 @@
 
                 if (val1 == "1YR") {	       
 	         svg.selectAll(".text1")
+		.attr("x",width/2)			
 		.text("2016 - A Nail Biter")  };
 		       
                 if (val1 == "3YR") {	       
@@ -366,10 +367,12 @@
 		       
                 if (val1 == "6MO") {	       
 	         svg.selectAll(".text1")
+		.attr("x",width/2-100)			
 		.text("2017 - All Time High Twice")  };
 		       
                 if (val1 == "1MO") {	       
 	         svg.selectAll(".text1")
+		.attr("x",width/2-100)			
 		.text("2017 3rd Quarter Bubble is about to burst")  };		       
 		       
 		       
