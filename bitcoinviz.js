@@ -358,11 +358,18 @@
 
                 if (val1 == "1YR") {	       
 	         svg.selectAll(".text1")
-		.attr("x",width/2)			
+		.attr("x",width/2-100)			
 		.text("2016 - A Nail Biter")  };
+		       
+
+                if (val1 == "5YR") {	       
+	         svg.selectAll(".text1")
+		.attr("x",width/2-100)			
+		.text("From Steady Increase in 2012 to Big Ride in 2013 and Big Downfall in 2014")  };		       
 		       
                 if (val1 == "3YR") {	       
 	         svg.selectAll(".text1")
+		.attr("x",width/2-200)				
 		.text("Revived from 2014 downfall and ended strong in 2015")  };	
 		       
                 if (val1 == "6MO") {	       
