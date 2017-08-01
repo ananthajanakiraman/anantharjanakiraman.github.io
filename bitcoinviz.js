@@ -342,7 +342,27 @@
 		  repeat();
                   minCircle.transition().duration(750).attr("cx", x(minimumObj.date))
 	             .attr("cy", y(minimumObj.price));	
-		  repeat1();    
+		  repeat1();
+		       
+		  function repeat() {
+			 maxCircle.transition()
+				  .duration(2000)
+			          .attr("r", 2)
+				  .transition()
+				  .duration(1000)
+				  .attr("r", 16)
+				  .on("end", repeat);
+			};
+	       
+	        function repeat1() {
+			          minCircle.transition()
+				  .duration(2000)
+			          .attr("r", 2)
+				  .transition()
+				  .duration(1000)
+				  .attr("r", 16)
+				  .on("end", repeat1);
+		        };
 		   
 	       });
            }
