@@ -286,8 +286,7 @@
 	        .style("font-size","10px")
 	        .style("font-weight", "bold")
 	        .style("font-family","sans-serif")
-	       
-                if (val == "5YR") {	       
+	       	       
 	         svg.append("text")
 	        .attr("class","text1")
 		.attr("x",width/2-200)
@@ -295,7 +294,7 @@
 		.text("From Steady Increase in 2012 to Big Ride in 2013 and Big Downfall in 2014")
 	        .style("font-size","14px")
 	        .style("font-weight", "bold")
-	        .style("font-family","sans-serif")   };
+	        .style("font-family","sans-serif")  
 	       
        d3.selectAll('input[name="BTHY"]').on("change", change);
 	       
@@ -358,24 +357,12 @@
 	             .attr("cy", y(minimumObj.price));	
 
                 if (val1 == "1YR") {	       
-	         svg.append("text")
-	        .attr("class","text1")
-		.attr("x",width/2-200)
-		.attr("y",height/2-100)
-		.text("2016 : A Nail Biter")
-	        .style("font-size","14px")
-	        .style("font-weight", "bold")
-	        .style("font-family","sans-serif")   };
+	         svg.selectAll(".text1")
+		.text("2016 - A Nail Biter")  };
 		       
                 if (val1 == "3YR") {	       
-	         svg.append("text")
-	        .attr("class","text1")
-		.attr("x",width/2-200)
-		.attr("y",height/2-100)
-		.text("Revived from 2014 downfall and ended strong in 2015")
-	        .style("font-size","14px")
-	        .style("font-weight", "bold")
-	        .style("font-family","sans-serif")   };		 
+	         svg.selectAll(".text1")
+		.text("Revived from 2014 downfall and ended strong in 2015")  };		 
 		       
 		       
 	       });
