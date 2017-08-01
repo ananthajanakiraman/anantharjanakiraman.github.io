@@ -297,7 +297,10 @@
                      .call(xAxis);
                   svg.select(".y.axis") // change the y axis
                      .duration(750)
-                     .call(yAxis);  		       
+                     .call(yAxis);  	
+		       
+                  maximum1 = d3.max(data, function(d) {return d.price;});
+ 	          maximumObj = data.filter(function(d) {return d.price == maximum1;})[0];		       
 		       
 	       });
          }
