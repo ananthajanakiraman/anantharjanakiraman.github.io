@@ -14,7 +14,6 @@
     <!-- Latest compiled and minified Bootstrap CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
 
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/d3-annotation/1.18.0/d3-annotation.min.css"/>
     
 </head>
 
@@ -26,7 +25,7 @@
                 <div class="social-links col-md-12"></div>
                 <div class="col-md-12">
 
-                    <h1>Digital Currency Trend Visualization</h1>
+                    <h1>Cryptocurrency Trend Visualization</h1>
                     <div class="byline">By <a href="#">Anantha Janakiraman</a></div>
 
                     <div class="meta">
@@ -64,8 +63,8 @@
                         control is related to the use of bitcoin's blockchain transaction database in the
                         role of a distributed ledger.</p>
                     
-                    <p> Below is the current market capitalization of different crytocurrencies and this visualization 
-                        is a preliminary study of the three most popular crytocurrencies (Bitcoin, Ethereum and Litecoin) traded
+                    <p> Below is the current market capitalization of different cryptocurrencies and this visualization 
+                        is a preliminary study of the three most popular cryptocurrencies (Bitcoin, Ethereum and Litecoin) traded
                         worldwide and Yes!!! I am considering buying the most popular Bitcoin cryptocurrency and the second most 
                         popular Ethereum cryptocurrency based on the recent trend as obvious from this visualization.</p>
                     
@@ -78,7 +77,7 @@
                         laid out as tabs to visualize the trend for the three most popular cryptocurrencies and each of the slide includes
                         five different parameter setting corresponding to five different time periods used for narration. The parameter 
                         setting enables drill down into specific scene or trend visualization for that specific time period and cryptocurrency.
-                        Annotation with transition has been included to highlight the peak point or the peak value for the 
+                        Annotation with transition has been included to highlight the peak point or peak value and the lowest point or lowest value for the 
                         specific scene or time period for each cryptocurrency type. Each scene in the slide has a tool tip to show details on 
                         demand that slides over the entire chart area and is enabled during a mouse over or mouse move event, the tool tip design 
                         includes a dashed array ruler that runs across the axes and a stroked circle matching the chart color and representing the data 
@@ -103,6 +102,7 @@
                           <label><input type="radio" name="BTHY" value="5YR" checked> 5 Years</label>
                           <label><input type="radio" name="BTHY" value="3YR"> 3 Years</label>
                           <label><input type="radio" name="BTHY" value="1YR"> 1 Year</label>
+                          <label><input type="radio" name="BTHY" value="6MO"> 6 Months</label>                        
                           <label><input type="radio" name="BTHY" value="1MO"> 1 Month</label>
                     </form>
                     <acontent></acontent>
@@ -113,6 +113,7 @@
                           <label><input type="radio" name="ETHY" value="5YR" checked> 5 Years</label>
                           <label><input type="radio" name="ETHY" value="3YR"> 3 Years</label>                        
                           <label><input type="radio" name="ETHY" value="1YR"> 1 Year</label>
+                          <label><input type="radio" name="ETHY" value="6MO"> 6 Months</label>                        
                           <label><input type="radio" name="ETHY" value="1MO"> 1 Month</label>
                     </form>
                     <bcontent></bcontent>
@@ -123,6 +124,7 @@
                           <label><input type="radio" name="LITY" value="5YR" checked> 5 Years </label>
                           <label><input type="radio" name="LITY" value="3YR"> 3 Years</label> 
                           <label><input type="radio" name="LITY" value="1YR"> 1 Year</label>
+                          <label><input type="radio" name="LITY" value="6MO"> 6 Months</label>
                           <label><input type="radio" name="LITY" value="1MO"> 1 Month</label>          
                     </form>
                     <ccontent></ccontent>
@@ -143,7 +145,8 @@
             <!--/section-->
             
             <footer>
-                <div id="source-line">Description: Narrative Visualization</div>
+                <br>
+                <div id="source-line">Description: Narrative Visualization - Data Visualization Project</div>
             </footer>
 
         </div>
@@ -152,8 +155,6 @@
 
     <!-- jQuery.js -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
-    
-    <!-- Moment.js -->
     
     <!-- D3.js -->
     <script src="https://d3js.org/d3.v4.min.js" charset="utf-8"></script>
@@ -164,7 +165,7 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
 
     <!-- d3 Annotate JS -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/d3-annotation/1.18.0/d3-annotation.min.js" charset="utf-8"></script>
+    <!--script src="https://cdnjs.cloudflare.com/ajax/libs/d3-annotation/1.18.0/d3-annotation.min.js" charset="utf-8"--><!--/script-->
     
     <!-- Our application script -->
     
@@ -175,13 +176,13 @@
                 cache: false
             });
             
-            //$.getScript("bitcoinviz.js");        
+            $.getScript("bitcoinviz.js");        
             $(".atab").click(function() {
                 $.getScript("bitcoinviz.js");
             })
-           //$('input[name="BTHY"]').on("change", function (e) { 
-           //    $.getScript("bitcoinviz.js");
-           //})
+           $('input[name="BTHY"]').on("change", function (e) { 
+               $.getScript("bitcoinviz.js");
+           })
         </script>
         <script>
             

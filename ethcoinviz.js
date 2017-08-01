@@ -21,7 +21,7 @@
        var parseDate1 = d3.timeFormat("%Y-%m-%d").parse;
        var parseDate  = d3.timeParse("%Y-%m-%d"),
 	   bisectDate = d3.bisector(function(d) { return d.date; }).left;
-       var formatTime = d3.timeFormat("%e %B");
+       var formatTime = d3.timeFormat("%e %B %Y");
 
        var div = d3.select("body").append("div")
                    .attr("class", "tooltip")
@@ -133,6 +133,14 @@
 		.style("opacity", 0.8)
 		.attr("y1",-height)
 		.attr("y2",0);
+	       
+	  focus1.append("line").attr("class", "y--line")
+	        .style("stroke", "#777")
+		.style("shape-rendering", "crispEdges")
+		.style("stroke-dasharray", "1,1")
+		.style("opacity", 0.8)
+		.attr("x1",-width)
+		.attr("x2",0);
 
 	   focus1.append("text").attr("class", "y1--text")
 		.style("stroke", "white")
@@ -183,6 +191,7 @@
 	              .text("$" + d.price);
                  focus1.select(".circle").attr("transform", "translate(" + x(d.date) + "," + y(d.price) + ")");
 	         focus1.select(".x--line").attr("transform", "translate(" + x(d.date) + "," + height + ")");
+	         focus1.select(".y--line").attr("transform", "translate(" + width + "," + y(d.price) + ")");		   
 				      }
 	       
         svg.selectAll(".dot")
@@ -209,11 +218,15 @@
 	              .text("$" + d.price);
                  focus1.select(".circle").attr("transform", "translate(" + x(d.date) + "," + y(d.price) + ")");
 	         focus1.select(".x--line").attr("transform", "translate(" + x(d.date) + "," + height + ")");
+	         focus1.select(".y--line").attr("transform", "translate(" + width + "," + y(d.price) + ")");		
 	
 	      });
 	       
                var maximum1 = d3.max(data, function(d) {return d.price;});
  	       var maximumObj = data.filter(function(d) {return d.price == maximum1;})[0];
+	       
+               var minimum1 = d3.min(data, function(d) {return d.price;});
+ 	       var minimumObj = data.filter(function(d) {return d.price == minimum1;})[0];  	       
 	       
 	       var maxCircle = svg.append("circle")
                                   .attr("class", "maxCircle")
@@ -221,10 +234,21 @@
                                   .attr("cy", y(maximumObj.price))
                                   .attr("r", 10)
                                   .attr("fill", "none")
+                                  .attr("stroke", "Lime")
+                                  .attr("stroke-width", "2px");
+                repeat();
+	       
+                var minCircle = svg.append("circle")
+	                          .attr("class", "minCircle")
+  	                          .attr("cx", x(minimumObj.date))
+                                  .attr("cy", y(minimumObj.price))
+                                  .attr("r", 10)
+                                  .attr("fill", "none")
                                   .attr("stroke", "red")
                                   .attr("stroke-width", "2px");
 	       
-                repeat();
+
+	        repeat1();
 	       
 		function repeat() {
 			 maxCircle.transition()
@@ -236,13 +260,32 @@
 				  .on("end", repeat);
 			};
 	       
+	        function repeat1() {
+			          minCircle.transition()
+				  .duration(2000)
+			          .attr("r", 2)
+				  .transition()
+				  .duration(1000)
+				  .attr("r", 16)
+				  .on("end", repeat1);
+		        };
+	       
 	       	svg.append("text")
 		.attr("x",width/2-100)
 		.attr("y",y(maximum1))
-		.text('Peak: ' + '$' + maximum1)
-	        .style("font-size","14px")
-	        .style("font-weight", "bold")
-	        .style("font-family","Arial")
+		.text('--Peak: ' + '$' + maximum1)
+	        .style("font-size","10px")
+	        .style("font-weight", "regular")
+	        .style("font-family","sans-serif")
+	       
+	       
+	       	svg.append("text")
+		.attr("x",width/2+10)
+		.attr("y",y(maximum1))
+		.text('--Lowest: ' + '$' + minimum1)
+	        .style("font-size","10px")
+	        .style("font-weight", "regular")
+	        .style("font-family","sans-serif")
 
        }); 
     })(d3);

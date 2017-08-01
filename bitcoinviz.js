@@ -20,7 +20,7 @@
        var parseDate1 = d3.timeFormat("%Y-%m-%d").parse;
        var parseDate  = d3.timeParse("%Y-%m-%d"),
 	   bisectDate = d3.bisector(function(d) { return d.date; }).left;
-       var formatTime = d3.timeFormat("%e %B");
+       var formatTime = d3.timeFormat("%e %B %Y");
 
        var div = d3.select("body").append("div")
                    .attr("class", "tooltip")
@@ -113,9 +113,8 @@
               .attr("d", line);
 	
 	  svg.append("path")
-	      .data([data])
+	      .datum(data)
 	      .attr("fill","lightsteelblue")
-	      .attr("class","area")
               .attr("d", area);
 	       
 	   var focus = svg.append("g")
@@ -225,16 +224,30 @@
                var maximum1 = d3.max(data, function(d) {return d.price;});
  	       var maximumObj = data.filter(function(d) {return d.price == maximum1;})[0];
 	       
+               var minimum1 = d3.min(data, function(d) {return d.price;});
+ 	       var minimumObj = data.filter(function(d) {return d.price == minimum1;})[0];  	       
+	       
 	       var maxCircle = svg.append("circle")
                                   .attr("class", "maxCircle")
   	                          .attr("cx", x(maximumObj.date))
                                   .attr("cy", y(maximumObj.price))
                                   .attr("r", 10)
                                   .attr("fill", "none")
+                                  .attr("stroke", "Lime")
+                                  .attr("stroke-width", "2px");
+                repeat();
+	       
+                var minCircle = svg.append("circle")
+	                          .attr("class", "minCircle")
+  	                          .attr("cx", x(minimumObj.date))
+                                  .attr("cy", y(minimumObj.price))
+                                  .attr("r", 10)
+                                  .attr("fill", "none")
                                   .attr("stroke", "red")
                                   .attr("stroke-width", "2px");
 	       
-                repeat();
+
+	        repeat1();
 	       
 		function repeat() {
 			 maxCircle.transition()
@@ -246,66 +259,33 @@
 				  .on("end", repeat);
 			};
 	       
+	        function repeat1() {
+			          minCircle.transition()
+				  .duration(2000)
+			          .attr("r", 2)
+				  .transition()
+				  .duration(1000)
+				  .attr("r", 16)
+				  .on("end", repeat1);
+		        };
+	       
 	       	svg.append("text")
 		.attr("x",width/2-100)
 		.attr("y",y(maximum1))
-		.text('Peak: ' + '$' + maximum1)
-	        .style("font-size","14px")
-	        .style("font-weight", "bold")
-	        .style("font-family","Arial")
-	
-       d3.selectAll('input[name="BTHY"]').on("change", change);
+		.text('--Peak: ' + '$' + maximum1)
+	        .style("font-size","10px")
+	        .style("font-weight", "regular")
+	        .style("font-family","sans-serif")
 	       
-       function change() {
-	       console.log("Inside the function");
 	       
-	       var val1 = d3.select('input[name="BTHY"]:checked').node().value;
-	       var maximum2 = d3.max(data, function(d) {return d.price;});
- 	       var maximumObj1 = data.filter(function(d) {return d.price == maximum2;})[0];
+	       	svg.append("text")
+		.attr("x",width/2+10)
+		.attr("y",y(maximum1))
+		.text('--Lowest: ' + '$' + minimum1)
+	        .style("font-size","10px")
+	        .style("font-weight", "regular")
+	        .style("font-family","sans-serif")
 	       
-	       d3.tsv("databit"+val1+".tsv", function(error, data) {
-                  if (error) throw error; 
-            
-                  data.forEach(function(d) {
-                  d.date = parseDate(d.Date);
-		  d.price = +d.BITCOIN;
-	          console.log(d.date, d.price);
-                  });
-		
-                  data.sort(function(a, b) {
-                       return a.date - b.date;
-                  });
 
-                  x.domain(d3.extent(data, function(d) {
-                       return d.date;
-                  }));
-	       
-                  y.domain([
-                      0,
-	       	      d3.max(data, function(d) {return d.price;})
-                  ]);
-	          area.y0(y(0));		       
-		  
-	          var svg = d3.select("acontent").transition();
-		       
-                  svg.select(".line")   // change the line
-                     .duration(750)
-                     .attr("d", line(data));
-                  svg.select(".area")
-                     .duration(750)
-	             .attr("d",area(data));
-                  svg.select(".x.axis") // change the x axis
-                     .duration(750)
-                     .call(xAxis);
-                  svg.select(".y.axis") // change the y axis
-                     .duration(750)
-                     .call(yAxis);  	
-		       
-                  svg.select(".maxCircle").attr("cx", x(maximumObj1.date)).attr("cy", y(maximumObj1.price));
-		       
-	       });
-         }
-        
-	       
        }); 
       })(d3);
