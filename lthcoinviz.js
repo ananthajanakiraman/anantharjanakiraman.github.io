@@ -6,6 +6,8 @@
          console.log("Hello world.")
         });
 	    
+     document.getElementById("LFYR").checked = true;	    
+	    
         var val = d3.select('input[name="LITY"]:checked').node().value;
         console.log(val);
 
