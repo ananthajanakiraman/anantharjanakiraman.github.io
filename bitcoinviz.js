@@ -270,20 +270,21 @@
 		        };
 	       
 	       	svg.append("text")
+	        .attr("class","maxValue")
 		.attr("x",width/2-100)
 		.attr("y",y(maximum1))
-		.text('--Peak: ' + '$' + maximum1)
+		.text('Peak: ' + '$' + maximum1)
 	        .style("font-size","10px")
-	        .style("font-weight", "regular")
+	        .style("font-weight", "bold")
 	        .style("font-family","sans-serif")
 	       
-	       
 	       	svg.append("text")
+	        .attr("class","minValue")
 		.attr("x",width/2+10)
 		.attr("y",y(maximum1))
-		.text('--Lowest: ' + '$' + minimum1)
+		.text('Lowest: ' + '$' + minimum1)
 	        .style("font-size","10px")
-	        .style("font-weight", "regular")
+	        .style("font-weight", "bold")
 	        .style("font-family","sans-serif")
 	       
        d3.selectAll('input[name="BTHY"]').on("change", change);
@@ -337,6 +338,9 @@
                   svg.select(".y.axis") // change the y axis
                      .duration(750)
                      .call(yAxis);  	
+		  svg.selectAll(".maxValue").attr("y",y(maximum1)).text('Peak: ' + maximum1)
+	          svg.selectAll(".minValue").attr("y",y(minimum1)).text('Lowest: ' + minimum1)
+		       
                   maxCircle.attr("cx", x(maximumObj.date))
 	             .attr("cy", y(maximumObj.price));
 
