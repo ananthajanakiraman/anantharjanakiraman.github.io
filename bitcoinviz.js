@@ -291,10 +291,10 @@
        function change() {
        
 	       var val1 = d3.select('input[name="BTHY"]:checked').node().value;
-	       maximum1 = d3.max(data, function(d) {return d.price;});
- 	       maximumObj = data.filter(function(d) {return d.price == maximum1;})[0];
-	       minimum1 = d3.min(data, function(d) {return d.price;});
- 	       minimumObj = data.filter(function(d) {return d.price == minimum1;})[0];
+	       var maximum1 = d3.max(data, function(d) {return d.price;});
+ 	       var maximumObj = data.filter(function(d) {return d.price == maximum1;})[0];
+	       var minimum1 = d3.min(data, function(d) {return d.price;});
+ 	       var minimumObj = data.filter(function(d) {return d.price == minimum1;})[0];
 	       
 	       d3.tsv("databit"+val1+".tsv", function(error, data) {
                   if (error) throw error; 
