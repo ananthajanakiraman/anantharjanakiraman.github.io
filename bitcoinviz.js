@@ -300,7 +300,8 @@
                      .call(yAxis);  	
 		       
                   maximum1 = d3.max(data, function(d) {return d.price;});
- 	          maximumObj = data.filter(function(d) {return d.price == maximum1;})[0];		       
+ 	          maximumObj = data.filter(function(d) {return d.price == maximum1;})[0];
+		  maxCircle(maximumObj);
 		       
 	       });
          }
