@@ -292,10 +292,10 @@
 		.style("shape-rendering", "crispEdges")
 		.style("stroke-dasharray", "1,1")
 		.style("opacity", 0.8)
-		.attr("y1",maximumObj.price)
-		.attr("y2",(maximumObj.price+10))	
-	        .attr("x1",maximumObj.date)
-		.attr("x2",(maximumObj.date+10));
+		.attr("y1",y(maximumObj.price))
+		.attr("y2",(y(maximumObj.price)+10))	
+	        .attr("x1",x(maximumObj.date))
+		.attr("x2",(x(maximumObj.date)+10));
 	       
        d3.selectAll('input[name="BTHY"]').on("change", change);
 	       
