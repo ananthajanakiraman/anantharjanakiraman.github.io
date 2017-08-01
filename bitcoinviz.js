@@ -287,6 +287,16 @@
 	        .style("font-weight", "bold")
 	        .style("font-family","sans-serif")
 	       
+	   svg.append("line").attr("class", "x--line")
+ 	        .style("stroke", "#777")
+		.style("shape-rendering", "crispEdges")
+		.style("stroke-dasharray", "1,1")
+		.style("opacity", 0.8)
+		.attr("y1",maximumObj.price)
+		.attr("y2",(maximumObj.price+10))	
+	        .attr("x1",maximumObj.date)
+		.attr("x2",(maximumObj.date+10));
+	       
        d3.selectAll('input[name="BTHY"]').on("change", change);
 	       
        function change() {
