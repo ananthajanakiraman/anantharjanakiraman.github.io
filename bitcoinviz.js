@@ -339,10 +339,10 @@
                      .call(yAxis);  	
                   maxCircle.transition().duration(750).attr("cx", x(maximumObj.date))
 	             .attr("cy", y(maximumObj.price));
-		  //repeat();
+		  repeat();
                   minCircle.transition().duration(750).attr("cx", x(minimumObj.date))
 	             .attr("cy", y(minimumObj.price));	
-		   //repeat1();    
+		  repeat1();    
 		   
 	       });
            }
