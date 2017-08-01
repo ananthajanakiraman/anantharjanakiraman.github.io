@@ -289,9 +289,9 @@
 	       
 	       	svg.append("text")
 	        .attr("class","text1")
-		.attr("x",x(maximum1))
-		.attr("y",y(maximum1))
-		.text('This is a test text')
+		.attr("x",width/2)
+		.attr("y",height/2)
+		.text("This is a test text")
 	        .style("font-size","10px")
 	        .style("font-weight", "bold")
 	        .style("font-family","sans-serif")       
