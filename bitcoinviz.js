@@ -260,6 +260,8 @@
 	       console.log("Inside the function");
 	       
 	       var val1 = d3.select('input[name="BTHY"]:checked').node().value;
+	       var maximum2 = d3.max(data, function(d) {return d.price;});
+ 	       var maximumObj1 = data.filter(function(d) {return d.price == maximum2;})[0];
 	       
 	       d3.tsv("databit"+val1+".tsv", function(error, data) {
                   if (error) throw error; 
@@ -299,9 +301,7 @@
                      .duration(750)
                      .call(yAxis);  	
 		       
-                  maximum1 = d3.max(data, function(d) {return d.price;});
- 	          maximumObj = data.filter(function(d) {return d.price == maximum1;})[0];
-		  maxCircle(maximumObj);
+                  svg.select(".maxCircle").attr("cx", x(maximumObj1.date)).attr("cy", y(maximumObj1.price));
 		       
 	       });
          }
