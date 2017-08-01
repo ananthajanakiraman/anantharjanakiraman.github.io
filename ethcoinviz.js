@@ -5,6 +5,8 @@
     $(document).ready(function() {
          console.log("Hello world.")
         });
+	    
+    document.getElementById("EFYR").checked = true;	    
 
       var val = d3.select('input[name="ETHY"]:checked').node().value;
         console.log(val);
