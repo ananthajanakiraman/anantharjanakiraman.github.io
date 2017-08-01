@@ -298,7 +298,7 @@
                   data.forEach(function(d) {
                   d.date = parseDate(d.Date);
 		  d.price = +d.BITCOIN;
-	          console.log(d.date, d.price);
+
                   });
 		
                   data.sort(function(a, b) {
