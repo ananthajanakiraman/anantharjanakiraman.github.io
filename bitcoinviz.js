@@ -335,7 +335,7 @@
 		  
 		  console.log(maximum1, minimum1, maximumObj, minimumObj);
 		       
-	          var svg = d3.select("acontent").transition();
+	          var svg = d3.select("acontent").transition().delay(1000);
 		       
                   svg.select(".line")   // change the line
                      .duration(750)
