@@ -292,7 +292,7 @@
 	         svg.append("text")
 	        .attr("class","text1")
 		.attr("x",width/2-200)
-		.attr("y",height/2-100)
+		.attr("y",height/2-50)
 		.text("From Steady Increase in 2012 to Big Ride in 2013 and Big Downfall in 2014")
 	        .style("font-size","14px")
 	        .style("font-weight", "bold")
@@ -335,7 +335,7 @@
 		  
 		  console.log(maximum1, minimum1, maximumObj, minimumObj);
 		       
-	          var svg = d3.select("acontent").transition().delay(1000);
+	          var svg = d3.select("acontent").transition().duration(1000);
 		       
                   svg.select(".line")   // change the line
                      .duration(750)
@@ -351,6 +351,7 @@
                      .call(yAxis);  	
 		  svg.selectAll(".maxValue").attr("y",y(maximum1)).text('Peak: ' + '$' + maximum1)
 	          svg.selectAll(".minValue").attr("y",y(maximum1)).text('Lowest: ' + '$' + minimum1)
+		  svg.delay(1000);
 		       
                   maxCircle.attr("cx", x(maximumObj.date))
 	             .attr("cy", y(maximumObj.price));
