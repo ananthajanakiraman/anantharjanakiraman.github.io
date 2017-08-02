@@ -339,10 +339,11 @@
 		       
                   svg.select(".line")   // change the line
 		     .ease(d3.easeSin)
-                     .duration(750)
+                     .duration(1000)
                      .attr("d", line(data));
                   svg.select(".area")
-                     .duration(750)
+		     .ease(d3.easeSin)		      
+                     .duration(1000)
 	             .attr("d",area(data));
                   svg.select(".x.axis") // change the x axis
                      .duration(750)
