@@ -294,7 +294,7 @@
 	         svg.append("text")
 	        .attr("class","text1")
 		.attr("x",width/2-200)
-		.attr("y",height/2-100)
+		.attr("y",height/2-50)
 		.text("Litecoin was released via an open-source client on GitHub in early 2012")
 	        .style("font-size","14px")
 	        .style("font-weight", "bold")
@@ -338,7 +338,7 @@
 		  
 		  console.log(maximum1, minimum1, maximumObj, minimumObj);
 		       
-	          var svg = d3.select("ccontent").transition();
+	          var svg = d3.select("ccontent").transition().duration(1000);
 		       
                   svg.select(".linelit")   // change the line
                      .duration(750)
