@@ -335,14 +335,12 @@
 		  
 		  console.log(maximum1, minimum1, maximumObj, minimumObj);
 		       
-	          var svg = d3.select("acontent").transition().ease(d3.easeElastic).duration(1000);
+	          var svg = d3.select("acontent").transition().duration(1000);
 		       
                   svg.select(".line")   // change the line
-		     .ease(d3.easeElastic)
                      .duration(1000)
                      .attr("d", line(data));
-                  svg.select(".area")
-		     .ease(d3.easeElastic)		      
+                  svg.select(".area")		      
                      .duration(1000)
 	             .attr("d",area(data));
                   svg.select(".x.axis") // change the x axis
