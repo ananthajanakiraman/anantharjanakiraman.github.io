@@ -338,19 +338,19 @@
 		  
 		  console.log(maximum1, minimum1, maximumObj, minimumObj);
 		       
-	          var svg = d3.select("ccontent").transition().duration(1000);
+	          var svg = d3.select("ccontent").transition().ease(d3.easeCubic).duration(1000);
 		       
                   svg.select(".linelit")   // change the line
-                     .duration(750)
+                     .duration(1000)
                      .attr("d", line(data));
                   svg.select(".arealit")
-                     .duration(750)
+                     .duration(1000)
 	             .attr("d",area(data));
                   svg.select(".x.axis") // change the x axis
-                     .duration(750)
+                     .duration(1000)
                      .call(xAxis);
                   svg.select(".y.axis") // change the y axis
-                     .duration(750)
+                     .duration(1000)
                      .call(yAxis);  	
 		  svg.selectAll(".maxValue").attr("y",y(maximum1)).text('Peak: ' + '$' + maximum1)
 	          svg.selectAll(".minValue").attr("y",y(maximum1)).text('Lowest: ' + '$' + minimum1)
