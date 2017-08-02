@@ -295,7 +295,7 @@
 	        svg.append("text")
 	        .attr("class","text1")
 		.attr("x",width/2-200)
-		.attr("y",height/2-100)
+		.attr("y",height/2-50)
 		.text("System went live on 30 July 2015, with 11.9 million coins premined for crowdsale")
 	        .style("font-size","14px")
 	        .style("font-weight", "bold")
@@ -338,7 +338,7 @@
 		  
 		  console.log(maximum1, minimum1, maximumObj, minimumObj);
 		       
-	          var svg = d3.select("bcontent").transition();
+	          var svg = d3.select("bcontent").transition().duration(1000);
 		       
                   svg.select(".lineeth")   // change the line
                      .duration(750)
