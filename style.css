@@ -67,7 +67,15 @@ img.center {
 }
 
 .area {
-    fill: steelblue;
+    fill: lightsteelblue;
+}
+
+.areaeth {
+    fill: bisque;
+}
+
+.arealit {
+    fill: Khaki;
 }
 
 text {

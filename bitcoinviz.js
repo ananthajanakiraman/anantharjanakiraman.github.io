@@ -6,6 +6,8 @@
          console.log("Hello world.")
         });
 
+	document.getElementById("BFYR").checked = true;
+	      
 	var val = d3.select('input[name="BTHY"]:checked').node().value;
 	      
        var margin = {
@@ -113,8 +115,8 @@
               .attr("d", line);
 	
 	  svg.append("path")
-	      .datum(data)
-	      .attr("fill","lightsteelblue")
+	      .data([data])
+	      .attr("class","area")
               .attr("d", area);
 	       
 	   var focus = svg.append("g")
@@ -270,22 +272,121 @@
 		        };
 	       
 	       	svg.append("text")
+	        .attr("class","maxValue")
 		.attr("x",width/2-100)
 		.attr("y",y(maximum1))
-		.text('--Peak: ' + '$' + maximum1)
+		.text('Peak: ' + '$' + maximum1)
 	        .style("font-size","10px")
-	        .style("font-weight", "regular")
+	        .style("font-weight", "bold")
 	        .style("font-family","sans-serif")
-	       
 	       
 	       	svg.append("text")
+	        .attr("class","minValue")
 		.attr("x",width/2+10)
 		.attr("y",y(maximum1))
-		.text('--Lowest: ' + '$' + minimum1)
+		.text('Lowest: ' + '$' + minimum1)
 	        .style("font-size","10px")
-	        .style("font-weight", "regular")
+	        .style("font-weight", "bold")
 	        .style("font-family","sans-serif")
+	       	       
+	         svg.append("text")
+	        .attr("class","text1")
+		.attr("x",width/2-200)
+		.attr("y",height/2-50)
+		.text("From Steady Increase in 2012 to Big Ride in 2013 and Big Downfall in 2014")
+	        .style("font-size","14px")
+	        .style("font-weight", "bold")
+	        .style("font-family","sans-serif")  
 	       
+       d3.selectAll('input[name="BTHY"]').on("change", change);
+	       
+       function change() {
+       
+	       var val1 = d3.select('input[name="BTHY"]:checked').node().value;
+	       
+	       d3.tsv("databit"+val1+".tsv", function(error, data) {
+                  if (error) throw error; 
+            
+                  data.forEach(function(d) {
+                  d.date = parseDate(d.Date);
+		  d.price = +d.BITCOIN;
 
+                  });
+		
+                  data.sort(function(a, b) {
+                       return a.date - b.date;
+                  });
+
+                  x.domain(d3.extent(data, function(d) {
+                       return d.date;
+                  }));
+	       
+                  y.domain([
+                      0,
+	       	      d3.max(data, function(d) {return d.price;})
+                  ]);
+	          area.y0(y(0));		       
+		  
+	          var maximum1 = d3.max(data, function(d) {return d.price;});
+ 	          var maximumObj = data.filter(function(d) {return d.price == maximum1;})[0];
+		       
+	          var minimum1 = d3.min(data, function(d) {return d.price;});
+ 	          var minimumObj = data.filter(function(d) {return d.price == minimum1;})[0];	
+		  
+		  console.log(maximum1, minimum1, maximumObj, minimumObj);
+		       
+	          var svg = d3.select("acontent").transition().ease(d3.easeCubic).duration(1000);
+		       
+                  svg.select(".line")   // change the line
+                     .duration(1000)
+                     .attr("d", line(data));
+                  svg.select(".area")		      
+                     .duration(1000)
+	             .attr("d",area(data));
+                  svg.select(".x.axis") // change the x axis
+                     .duration(1000)
+                     .call(xAxis);
+                  svg.select(".y.axis") // change the y axis
+                     .duration(1000)
+                     .call(yAxis);  	
+		  svg.selectAll(".maxValue").attr("y",y(maximum1)).text('Peak: ' + '$' + maximum1)
+	          svg.selectAll(".minValue").attr("y",y(maximum1)).text('Lowest: ' + '$' + minimum1);
+		       
+                  maxCircle.attr("cx", x(maximumObj.date))
+	             .attr("cy", y(maximumObj.price));
+
+                  minCircle.attr("cx", x(minimumObj.date))
+	             .attr("cy", y(minimumObj.price));	
+
+                if (val1 == "1YR") {	       
+	         svg.selectAll(".text1")
+		.attr("x",width/2-100)			
+		.text("2016 - A Nail Biter")  };
+		       
+
+                if (val1 == "5YR") {	       
+	         svg.selectAll(".text1")
+		.attr("x",width/2-200)			
+		.text("From Steady Increase in 2012 to Big Ride in 2013 and Big Downfall in 2014")  };		       
+		       
+                if (val1 == "3YR") {	       
+	         svg.selectAll(".text1")
+		.attr("x",width/2-200)				
+		.text("Revived from 2014 downfall and ended strong in 2015")  };	
+		       
+                if (val1 == "6MO") {	       
+	         svg.selectAll(".text1")
+		.attr("x",width/2-100)			
+		.text("2017 - All Time High Twice")  };
+		       
+                if (val1 == "1MO") {	       
+	         svg.selectAll(".text1")
+		.attr("x",width/2-100)			
+		.text("2017 3rd Quarter Bubble is about to burst")  };		       
+		       
+		       
+	       });
+           }
+	       
        }); 
       })(d3);

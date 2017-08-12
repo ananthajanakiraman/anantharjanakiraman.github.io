@@ -4,7 +4,7 @@
     <meta charset="utf-8"/>
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
 
-    <title>Graphic title here</title><?php /* EDIT ME */ ?>
+    <title>Cryptocurrency Visualization</title><?php /* EDIT ME */ ?>
 
 
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
@@ -29,7 +29,7 @@
                     <div class="byline">By <a href="#">Anantha Janakiraman</a></div>
 
                     <div class="meta">
-                        Published Jul. 24, 2017
+                        Published Jul. 31, 2017
                     </div>
                 </div>
             </header>
@@ -68,7 +68,13 @@
                         worldwide and Yes!!! I am considering buying the most popular Bitcoin cryptocurrency and the second most 
                         popular Ethereum cryptocurrency based on the recent trend as obvious from this visualization.</p>
                     
-                    <p style="text-align:center"><img src="Cryptocurrency.png" alt="Cryptocurrency" style="width:980px;height:400px;" align="middle"></p>
+                    <p style="text-align:center">
+                        <img src="Cryptocurrency.png" alt="Cryptocurrency" style="width:980px;height:400px;" align="middle">
+                        <script>
+                            
+                        </script>
+                        
+                    </p>
                 
                     <H2> Narrative Visualization </H2>
                     
@@ -85,13 +91,13 @@
                         employed for the currency types to enable visual differentiation. Colors, tool tips, annotations, 
                         parameters etc are kept consistent across the scenes in each slide or tab. The X-Axis represents date variable and Y-Axis 
                         represents closing price, the axes are transformed and scaled for each scene according to the data being visualized to fit
-                        in the SVG canvas area.
+                        in the SVG canvas area. The charts transition between different time periods or scenes through the D3 transition function and
+                        the data, axes, tooltips, colorscales and annotations transition along with the charts which is one of the highlights of this visualization.
                     </p>
                     <p>
                         The data used for this visualization has been gathered from different financial portals including investing.com, 
                         cryptocompare.com, coinbase.com and coindesk.com. The date range used for this visualziation is between June 2012 to July 2017.
-                        The visualization is coded using D3 JS library and I am continuing to enhance them to make the transitions between scenes 
-                        visually more effective and nice.
+                        The visualization is coded using D3 JS library and I will continue to enhance the visualization to add more drill down features
                     </p>
                 </div>
                 
@@ -99,7 +105,7 @@
                     
                     <br>
                     <form>
-                          <label><input type="radio" name="BTHY" value="5YR" checked> 5 Years</label>
+                          <label><input type="radio" name="BTHY" id="BFYR" value="5YR" checked> 5 Years</label>
                           <label><input type="radio" name="BTHY" value="3YR"> 3 Years</label>
                           <label><input type="radio" name="BTHY" value="1YR"> 1 Year</label>
                           <label><input type="radio" name="BTHY" value="6MO"> 6 Months</label>                        
@@ -110,7 +116,7 @@
                 <div class="tab-pane" id="b_tab">
                     <br>
                     <form>
-                          <label><input type="radio" name="ETHY" value="5YR" checked> 5 Years</label>
+                          <label><input type="radio" name="ETHY" id="EFYR" value="5YR" checked> 5 Years</label>
                           <label><input type="radio" name="ETHY" value="3YR"> 3 Years</label>                        
                           <label><input type="radio" name="ETHY" value="1YR"> 1 Year</label>
                           <label><input type="radio" name="ETHY" value="6MO"> 6 Months</label>                        
@@ -121,7 +127,7 @@
                 <div class="tab-pane" id="c_tab">
                     <br>
                     <form>
-                          <label><input type="radio" name="LITY" value="5YR" checked> 5 Years </label>
+                          <label><input type="radio" name="LITY" id="LFYR" value="5YR" checked> 5 Years </label>
                           <label><input type="radio" name="LITY" value="3YR"> 3 Years</label> 
                           <label><input type="radio" name="LITY" value="1YR"> 1 Year</label>
                           <label><input type="radio" name="LITY" value="6MO"> 6 Months</label>
@@ -176,31 +182,31 @@
                 cache: false
             });
             
-            $.getScript("bitcoinviz.js");        
+            //$.getScript("bitcoinviz.js");        
             $(".atab").click(function() {
                 $.getScript("bitcoinviz.js");
             })
-           $('input[name="BTHY"]').on("change", function (e) { 
-               $.getScript("bitcoinviz.js");
-           })
+           //$('input[name="BTHY"]').on("change", function (e) { 
+           //    $.getScript("bitcoinviz.js");
+           //})
         </script>
         <script>
             
             $(".btab").click(function() {
                 $.getScript("ethcoinviz.js");
             })
-            $('input[name="ETHY"]').on("change", function (e) {
-               $.getScript("ethcoinviz.js");
-           })            
+            //$('input[name="ETHY"]').on("change", function (e) {
+            //   $.getScript("ethcoinviz.js");
+            //})            
         </script>
         <script>
             
             $(".ctab").click(function() {
                 $.getScript("lthcoinviz.js");
             })
-            $('input[name="LITY"]').on("change", function (e) {
-               $.getScript("lthcoinviz.js");
-           })            
+            //$('input[name="LITY"]').on("change", function (e) {
+            //   $.getScript("lthcoinviz.js");
+           //})            
         </script>    
     <!--<script src="bitcoinviz.js" charset="utf-8"></script>-->
    
