@@ -15,8 +15,8 @@
          bottom: 30,
          left: 50
        },
-       width = 1140 - margin.left - margin.right,
-       height = 520 - margin.top - margin.bottom;
+       width = $(".chart").width() - margin.left - margin.right,
+       height = $(".chart").height() - margin.top - margin.bottom;
         
        var parseDate1 = d3.timeFormat("%Y-%m-%d").parse;
        var parseDate  = d3.timeParse("%Y-%m-%d"),
